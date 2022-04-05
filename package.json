@@ -1,0 +1,18 @@
+{
+  "name": "todo",
+  "version": "1.0.0",
+  "description": "Create a to-do list and save associated information (ex. links and files)",
+  "main": "bin/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "hliu23",
+  "license": "MIT",
+  "bin": {
+    "todo": "./bin/index.js"
+  },
+  "dependencies": {
+    "open": "^8.4.0",
+    "yargs": "^17.4.0"
+  }
+}
