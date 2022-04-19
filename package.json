@@ -1,18 +1,27 @@
 {
-  "name": "todo",
+  "name": "ctodo",
   "version": "1.0.0",
   "description": "Create a to-do list and save associated information (ex. links and files)",
   "main": "bin/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hliu23/todo.git"
   },
   "author": "hliu23",
   "license": "MIT",
   "bin": {
-    "todo": "./bin/index.js"
+    "ctodo": "./bin/index.js"
   },
   "dependencies": {
+    "dotenv": "^16.0.0",
     "open": "^8.4.0",
     "yargs": "^17.4.0"
+  },
+  "devDependencies": {
+    "chai": "^4.3.6",
+    "mocha": "^9.2.2"
   }
 }
