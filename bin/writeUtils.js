@@ -18,18 +18,14 @@ function parseTasks(args) {
 }
 
 function writeTasks(file, content) {
-  console.log(file);
-  console.log(file);
-
   writeFile(file, content, { flag: "a" })
     .then(() => {
-      console.log("Successfully write content to " + file);
+      // console.log("Successfully write content to " + file);
     })
     .catch((err) => {
       console.error(err)
     });
 }
-
 
 module.exports = {
   parseTasks: parseTasks,
