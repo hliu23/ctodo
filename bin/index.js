@@ -13,9 +13,21 @@ const options = yargs
   type: "boolean",
   demandOption: false
 })
+.option("m", {
+  alias: "modify",
+  describe: "Modify task info",
+  type: "boolean",
+  demandOption: false
+})
 .option("l", {
   alias: "list",
   describe: "List all entered tasks.",
+  type: "boolean",
+  demandOption: false
+})
+.option("f", {
+  alias: "format",
+  describe: "Format output.",
   type: "boolean",
   demandOption: false
 })
@@ -28,15 +40,20 @@ const options = yargs
 .help(true)
 .argv;
 
-if (yargs.argv._[0] == null) {
-  yargs.showHelp();
-} else if (yargs.argv.i || yargs.argv.init) {
+
+if (yargs.argv.i || yargs.argv.init) {
   const file = rutils.getPath("files.tasksFile");
   const task = wutils.parseTasks(yargs.argv._);
-  wutils.writeTasks(file, task);
+  wutils.appendTask(file, task);
+} 
+if (yargs.argv.l || yargs.argv.list) {
+  const file = rutils.getPath("files.tasksFile");
+
+  if (yargs.argv.f) rutils.listTasks(file, true);
 }
 
 
+// console.log(yargs.argv)
 
 // const openFile = taskFile.replace(/\\/g, "/");
 
