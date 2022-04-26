@@ -1,7 +1,7 @@
 {
   "files": {
-    "userDirectory": "../user_data",
-    "tasksFile": "../user_data/tasks.json"
+    "userDirectory": "../../user_data",
+    "tasksFile": "../../user_data/tasks.json"
   }
 
 }
