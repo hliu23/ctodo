@@ -2,6 +2,7 @@ const utils = require("../functions/utils.js");
 const list = require("../functions/list.js");
 
 exports.command = "list";
+exports.aliases = ["l"];
 
 exports.describe = "List all entered tasks";
 
