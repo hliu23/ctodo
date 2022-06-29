@@ -9,25 +9,30 @@ const readFile = util.promisify(fs.readFile);
 
 function getPath(configStr) {
   // test path?
-  const file = config.get(configStr);
-  return path.join(__dirname, file);
+  try {
+    const file = config.get(configStr);
+    const res = path.join(__dirname, file);
+    if (fs.existsSync(res)) return res;
+    else throw Error("Path does not exist");
+  } catch (err) {
+    catchError(err);
+  }
 }
 
 function catchError(err) {
   // input error object
   // log in the future
-  console.error(err);
+  console.error(err.message);
 }
 
 // path
-// options: object?
-// insert function: take object and optional parameter and return object
-function editJSON(path, options, middleFunc) {
+// middle function: take object and optional parameter and return object
+function editJSON(path, middleFunc) {
   readFile(path)
     .then((content) => {
       if (content != "") content = JSON.parse(content);
       else content = {};
-      const result = JSON.stringify(middleFunc(content, options));
+      const result = JSON.stringify(middleFunc(content));
       return writeFile(path, result);
     })
     .catch((err) => {

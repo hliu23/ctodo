@@ -20,8 +20,8 @@ function parseTasks(args) {
   return parsedText;
 }
 
-function appendTask(path, task) {
-  utils.editJSON(path, task, function (content, task) {
+function appendTask(path, task, verbose) {
+  utils.editJSON(path, function (content) {
     if (content.tasks === undefined) content.tasks = [];
     const index = content.tasks.length;
     const date = new Date();
@@ -31,26 +31,11 @@ function appendTask(path, task) {
       modified: date,
       id: uuid
     }
+    // move down later?
+    if (verbose) console.info("Task '"+ task + "' created at " + date);
     return content;
   });
-  // readFile(path)
-  //   .then((content) => {
-  //     if (content != "") content = JSON.parse(content);
-  //     else content = {};
-  //     const result = JSON.stringify(insert(content, task));
-  //     return writeFile(path, result);
-  //   })
-  //   .catch((err) => {
-  //     utils.catchError(err);
-  //   })
 }
-
-// as arrow function inside?
-// local
-function insert(content, task) {
-
-}
-
 
 module.exports = {
   parseTasks: parseTasks,
